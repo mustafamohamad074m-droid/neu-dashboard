@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جدول المحاضرات والسكاشن وحضور NEU - Dr. Mustafa</title>
+    <style>
+        body { font-family: 'Cairo', sans-serif; background: #f4f6f9; margin: 0; padding: 0; color: #333; }
+        .login-container { display: flex; justify-content: center; align-items: center; height: 100vh; background: #eef2f7; }
+        .login-box { background: #fff; padding: 35px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        .login-box h2 { color: #2c3e50; margin-bottom: 10px; }
+        .login-box p { color: #666; font-size: 14px; margin-bottom: 20px; }
+        .login-box input { width: 100%; padding: 14px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; text-align: center; font-size: 16px; outline: none; transition: 0.3s; }
+        .login-box input:focus { border-color: #3498db; box-shadow: 0 0 5px rgba(52,152,219,0.3); }
+        .login-box button { background: #3498db; color: white; border: none; padding: 14px; width: 100%; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .login-box button:hover { background: #2980b9; }
+        .error { color: #e74c3c; margin-top: 10px; font-size: 14px; display: none; }
+        
+        /* محتوى الموقع الأساسي */
+        #app-content { display: none; padding: 20px; max-width: 900px; margin: auto; }
+        .header-card { background: linear-gradient(135deg, #2c3e50, #34495e); color: #fff; padding: 25px; border-radius: 12px; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .stats-box { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; text-align: center; }
+        .schedule-table { width: 100%; background: #fff; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .schedule-table th, .schedule-table td { padding: 12px 15px; border-bottom: 1px solid #eee; text-align: center; }
+        .schedule-table th { background: #3498db; color: white; }
+    </style>
+</head>
+<body>
+
+    <!-- شاشة تسجيل الدخول للحماية -->
+    <div id="login-screen" class="login-container">
+        <div class="login-box">
+            <h2>🔒 بوابة دفعة NEU</h2>
+            <p>أدخل كلمة المرور الخاصة للوصول إلى لوحة الحضور</p>
+            <input type="password" id="password-input" placeholder="كلمة المرور...">
+            <button onclick="checkPassword()">دخول للموقع</button>
+            <div id="error-msg" class="error">كلمة المرور غير صحيحة، حاول مرة أخرى.</div>
+        </div>
+    </div>
+
+    <!-- محتوى الموقع الفعلي الخاص بك -->
+    <div id="app-content">
+        <div class="header-card">
+            <h1>🎓 جدول المحاضرات والسكاشن وحضور NEU</h1>
+            <p>Dr. Mustafa Mohamed Al-Sayed</p>
+            <p style="font-size: 13px; opacity: 0.8;">✨ بِسْمِ اللَّهِ نَتَوَكَّلُ عَلَى اللَّهِ</p>
+        </div>
+
+        <div class="stats-box">
+            <h3>📊 نسبة الحضور الإجمالية: <span style="color: #27ae60;">100%</span></h3>
+            <p>🛡️ الحد الأقصى المسموح للغِياب (25%): <strong>3 متاح</strong></p>
+            <p>🚨 حالة الالتزام: <span style="color: #27ae60; font-weight: bold;">آمن تماماً ✅ (فوق 75%)</span></p>
+        </div>
+
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>اليوم والمادة / السكشن</th>
+                    <th>التوقيت</th>
+                    <th>نوع الحصة</th>
+                    <th>حالة الحضور</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>📅 يوم الأحد</strong><br>Physiology I</td>
+                    <td>9:00 - 9:50</td>
+                    <td>سكشن (Practical)</td>
+                    <td>ملغي 🚫</td>
+                </tr>
+                <tr>
+                    <td>Physiology I</td>
+                    <td>11:00 - 12:40</td>
+                    <td>محاضرة (Lecture)</td>
+                    <td>حاضر ✅</td>
+                </tr>
+                <tr>
+                    <td>Biophysics</td>
+                    <td>1:00 - 1:50</td>
+                    <td>سكشن (Practical)</td>
+                    <td>حاضر ✅</td>
+                </tr>
+                <tr>
+                    <td>Psychology</td>
+                    <td>7:00 - 8:50</td>
+                    <td>محاضرة أونلاين</td>
+                    <td>حاضر ✅</td>
+                </tr>
+                <tr>
+                    <td><strong>📅 يوم الاثنين</strong><br>Medical Terminology</td>
+                    <td>9:00 - 10:40</td>
+                    <td>محاضرة (Lecture)</td>
+                    <td>حاضر ✅</td>
+                </tr>
+                <tr>
+                    <td>Biochemistry I</td>
+                    <td>11:00 - 12:40</td>
+                    <td>محاضرة (Lecture)</td>
+                    <td>حاضر ✅</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div style="text-align: center; margin-top: 30px; color: #7f8c8d; font-size: 14px;">
+            <p>Prepared & Designed by Dr. Mustafa Mohamed Al-Sayed | واتساب: 01154727839</p>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            // تقدر تغير الباسورد هنا (مثلاً بدل Mostafa2026 حط اللي تعجبك)
+            const correctPassword = "Mostafa2026"; 
+            const userInput = document.getElementById("password-input").value;
+
+            if (userInput === correctPassword) {
+                document.getElementById("login-screen").style.display = "none";
+                document.getElementById("app-content").style.display = "block";
+            } else {
+                document.getElementById("error-msg").style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
